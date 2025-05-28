@@ -1,0 +1,21 @@
+{
+  "name": "@respace-plugins/services",
+  "version": "0.1.0",
+  "private": false,
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etna-student/respace-plugins.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
