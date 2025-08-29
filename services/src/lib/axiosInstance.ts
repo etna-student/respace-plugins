@@ -2,7 +2,7 @@ import axios from "axios";
 
 let token: string | null = null;
 
-export function setToken(newToken: string) {
+export function setToken(newToken: string | null) {
   token = newToken;
 }
 
