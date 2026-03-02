@@ -103,7 +103,15 @@ export async function get_reviews_received(id: number): Promise<any> {
 }
 
 /**
- * Récupère les favoris d’un utilisateur.
+ * Récupère les favoris de l'utilisateur connecté.
+ */
+export async function get_my_favorites(): Promise<any> {
+  const response = await api.get("/user/me/favorites");
+  return response.data;
+}
+
+/**
+ * Récupère les favoris d'un utilisateur.
  */
 export async function get_user_favorites(id: number): Promise<any> {
   const response = await api.get(`/user/${id}/favorites`);
@@ -111,7 +119,7 @@ export async function get_user_favorites(id: number): Promise<any> {
 }
 
 /**
- * Récupère les objets en vente d’un utilisateur.
+ * Récupère les objets en vente d'un utilisateur.
  */
 export async function get_items_for_sale(id: number): Promise<any> {
   const response = await api.get(`/user/${id}/items/for-sale`);
@@ -165,4 +173,13 @@ export async function create_my_wishlist(data: { name: string; item_ids: number[
  */
 export async function delete_my_wishlist(wishlist_id: number): Promise<void> {
   await api.delete(`/user/me/wishlist/${wishlist_id}`);
+}
+
+/**
+ * Retire un produit d'une wishlist (supprime le lien wishlist↔produit, pas le produit lui-même).
+ * @param wishlist_id - L'identifiant de la wishlist.
+ * @param item_id - L'identifiant du produit à retirer de la liste.
+ */
+export async function delete_item_from_my_wishlist(wishlist_id: number, item_id: number): Promise<void> {
+  await api.delete(`/user_wish/${wishlist_id}/items/${item_id}`);
 }
